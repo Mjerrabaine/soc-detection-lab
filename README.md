@@ -61,3 +61,38 @@ Custom SPL queries were developed to detect malicious behavior using Sysmon logs
 
 For example:
 index= "main " Image="*powershell.exe*" CommandLine="*-EncodedCommand*" 
+
+
+## Alerts
+
+Detection rules were converted into automated alerts within Splunk to simulate real SOC monitoring workflows.
+
+Alerts created:
+
+- Encoded PowerShell Execution
+- Registry Persistence Run Key
+
+---
+
+## Incident Investigation
+
+Two security incidents were investigated based on simulated attacks.
+
+Incident reports include:
+
+- Timeline of activity
+- Log evidence
+- MITRE ATT&CK technique mapping
+- Investigation findings
+
+---
+
+## Skills Demonstrated
+
+- SIEM log analysis
+- Detection engineering
+- Threat hunting
+- MITRE ATT&CK mapping
+- Incident response investigation
+
+---
