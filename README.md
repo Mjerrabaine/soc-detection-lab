@@ -58,3 +58,6 @@ Each attack includes:
 ## Detection Engineering
 
 Custom SPL queries were developed to detect malicious behavior using Sysmon logs.
+
+For example:
+index= "main " Image="*powershell.exe*" CommandLine="*-EncodedCommand*" 
