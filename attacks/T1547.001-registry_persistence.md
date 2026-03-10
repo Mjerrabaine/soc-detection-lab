@@ -1,1 +1,64 @@
+# Encoded PowerShell Execution
 
+## Description
+
+Encoded PowerShell commands are commonly used by attackers to obfuscate malicious scripts.
+
+PowerShell may also be used to download and run executables from the Internet, which can be executed from disk or in memory without touching disk.
+
+This technique is frequently used in malware and post-exploitation frameworks.
+
+MITRE ATT&CK Technique:
+T1059.001 – PowerShell
+
+---
+
+## Attack Simulation
+
+The following command was executed on the Windows machine:
+
+powershell -EncodedCommand dwBoAG8AYQBtAGkA
+
+---
+
+## Detection
+
+Splunk query:
+
+index=main Image="*powershell.exe*" CommandLine="*-EncodedCommand*"
+
+<img src="../screenshots/queries/EncodedPowershellSplunkQuery.PNG" width="800"/>
+
+---
+
+## Evidence
+
+<img src="../screenshots/EncodedPowershellCommandRun.PNG" width="800"/>
+
+---
+
+## Analysis
+
+The command line included the parameter "-EncodedCommand", indicating an attempt to execute an obfuscated PowerShell command.
+
+Such behavior is commonly associated with malicious scripts and living-off-the-land attacks.
+
+The log produced by sysmon visualized in Splunk shows the execution of an encoded command
+
+<img src="../screenshots/logs/EncodedPowershellResultSplunk.PNG" width="800"/>
+---
+
+## Alert
+An alert was created in Splunk using the same SPL query to identify such behaviours. The alert was configured to show in triggered alerts in SPlunk Enterprise, the alert also included an email alert sent via email. 
+
+---
+
+## Mitigation
+
+Possible defensive measures include:
+
+- M1049: Antivirus/Antimalware: Automatically quarantine suspicious files
+- M1045: Code Signing: Set Execution policyin powershell to only signed scripts
+- M1042: Disable or Remove Feature or Program: It may be possible to remove PowerShell from systems when it is not needed
+- M1038	Execution Prevention: PowerShell Constrained Language mode can be used to restrict access to sensitive or otherwise dangerous language elements
+- M1026	Privileged Account Management: When PowerShell is necessary, consider restricting PowerShell execution policy to administrators. PowerShell JEA (Just Enough Administration) may also be used to sandbox administration and limit which commands are allowed.
