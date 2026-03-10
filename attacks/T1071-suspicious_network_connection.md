@@ -57,7 +57,7 @@ Sysmon Event ID 3 logs outbound network connections including:
 - Destination IP address
 - Destination port
 
-<img src="../screenshots/queries/SPLQueryAtttack3.png" width="800"/>
+<img src="../screenshots/queries/SPLQueryAttack3.png" width="800"/>
 
 ---
 
@@ -104,10 +104,10 @@ This alert allows SOC analysts to detect potential command-and-control communica
 
 ## Mitigation
 
-Possible defensive measures include:
+Defensive measures listed in MITRE ATTACK include:
 
-- M1037	Filter Network Traffic: Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic..
+- M1037	Filter Network Traffic: Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. 
 
-- M1031	Network Intrusion Prevention: Network intrusion detection and prevention systems that use network signatures to identify traffic for specific adversary malware can be used to mitigate activity at the network level.
+- M1031	Network Intrusion Prevention: Network intrusion detection and prevention systems that use network signatures to identify traffic for specific adversary malware at the network level.
 
 
