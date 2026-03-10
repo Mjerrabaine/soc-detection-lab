@@ -97,9 +97,9 @@ Incident reports include:
 
 ---
 
-## Detection Coverage
+## Techniques detected
 
-Technique | Detection Implemented
+Technique | Identified Attack
 --- | ---
 T1059.001 | Encoded PowerShell Execution
 T1547.001 | Registry Run Key Persistence
