@@ -1,23 +1,44 @@
-# Encoded PowerShell Execution
+# Suspicious Outbound Network Connection
 
 ## Description
 
-Encoded PowerShell commands are commonly used by attackers to obfuscate malicious scripts.
+Suspicious outbound network connections are commonly associated with command-and-control (C2) communication.
 
-PowerShell may also be used to download and run executables from the Internet, which can be executed from disk or in memory without touching disk.
+After gaining initial access to a system, attackers often establish outbound connections to remote servers in order to:
 
-This technique is frequently used in malware and post-exploitation frameworks.
+- Receive commands
+- Exfiltrate data
+- Download additional malicious payloads
 
-MITRE ATT&CK Technique:
-T1059.001 – PowerShell
+Because outbound traffic is often allowed by default in many networks, attackers frequently use this channel to maintain communication with compromised hosts.
+
+Monitoring unusual or unauthorized outbound connections is therefore an important detection strategy in Security Operations Centers (SOC).
+
+MITRE ATT&CK Technique:  
+**T1071 – Application Layer Protocol**
 
 ---
 
 ## Attack Simulation
 
-The following command was executed on the Windows machine:
+To simulate suspicious outbound communication, a connection was established between the Windows machine and the Kali Linux attacker machine using Netcat.
 
-powershell -EncodedCommand dwBoAG8AYQBtAGkA
+On the Kali Linux system a listener was started:
+
+nc -lvnp 4444
+
+<img src="../screenshots/commands/KaliWindowsconnection.PNG" width="800"/>
+
+On the Windows system the following command was executed to initiate the connection:
+
+
+nc 198.168.56.103 4444
+
+<img src="../screenshots/commands/WindowsKaliconnection.PNG" width="800"/>
+
+198.168.56.103 being the kali ip address. 
+
+This simulates a compromised host establishing a connection to a remote command-and-control server.
 
 ---
 
@@ -25,31 +46,59 @@ powershell -EncodedCommand dwBoAG8AYQBtAGkA
 
 Splunk query:
 
-index=main Image="*powershell.exe*" CommandLine="*-EncodedCommand*"
+index=main Image="*powershell.exe*" DestinationPort="4444" 
 
-<img src="../screenshots/queries/EncodedPowershellSplunkQuery.PNG" width="800"/>
+
+This query searches for **Sysmon network connection events**.
+
+Sysmon Event ID 3 logs outbound network connections including:
+
+- Source process
+- Destination IP address
+- Destination port
+
+<img src="../screenshots/queries/SPLQueryAtttack3.PNG" width="800"/>
 
 ---
 
 ## Evidence
 
-<img src="../screenshots/EncodedPowershellCommandRun.PNG" width="800"/>
+The network connection was initiated from the Windows host to the Kali Linux machine.
+
+<img src="../screenshots/SuspiciousNetworkConnectionCommandRun.PNG" width="800"/>
 
 ---
 
 ## Analysis
 
-The command line included the parameter "-EncodedCommand", indicating an attempt to execute an obfuscated PowerShell command.
+Sysmon generated **Event ID 3**, which indicates a network connection initiated by a process on the system.
 
-Such behavior is commonly associated with malicious scripts and living-off-the-land attacks.
+The log shows that a process initiated a connection to an external IP address on port **4444**, which is commonly used in penetration testing tools and reverse shells.
 
-The log produced by sysmon visualized in Splunk shows the execution of an encoded command
+Monitoring outbound connections is important because compromised hosts frequently communicate with attacker-controlled infrastructure.
 
-<img src="../screenshots/logs/EncodedPowershellResultSplunk.PNG" width="800"/>
+In a real-world scenario, analysts would investigate:
+
+- Whether the destination IP address is known or malicious
+- Whether the port used is commonly associated with command-and-control activity
+- Which process initiated the connection
+
+<img src="../screenshots/logs/Splunkloganalysis.PNG" width="800"/>
+
 ---
 
 ## Alert
-An alert was created in Splunk using the same SPL query to identify such behaviours. The alert was configured to show in triggered alerts in SPlunk Enterprise, the alert also included an email alert sent via email. 
+
+An alert was created in Splunk using the same SPL query to detect suspicious outbound network connections.
+
+Alert configuration included:
+
+- Trigger condition: Results greater than 0
+- Alert frequency: Every 5 minutes
+- Action: Add to triggered alerts in Splunk
+- Action: Send email notification
+
+This alert allows SOC analysts to detect potential command-and-control communication from compromised hosts.
 
 ---
 
@@ -57,8 +106,8 @@ An alert was created in Splunk using the same SPL query to identify such behavio
 
 Possible defensive measures include:
 
-- M1049: Antivirus/Antimalware: Automatically quarantine suspicious files
-- M1045: Code Signing: Set Execution policyin powershell to only signed scripts
-- M1042: Disable or Remove Feature or Program: It may be possible to remove PowerShell from systems when it is not needed
-- M1038	Execution Prevention: PowerShell Constrained Language mode can be used to restrict access to sensitive or otherwise dangerous language elements
-- M1026	Privileged Account Management: When PowerShell is necessary, consider restricting PowerShell execution policy to administrators. PowerShell JEA (Just Enough Administration) may also be used to sandbox administration and limit which commands are allowed.
+- M1037	Filter Network Traffic: Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic..
+
+- M1031	Network Intrusion Prevention: Network intrusion detection and prevention systems that use network signatures to identify traffic for specific adversary malware can be used to mitigate activity at the network level.
+
+
