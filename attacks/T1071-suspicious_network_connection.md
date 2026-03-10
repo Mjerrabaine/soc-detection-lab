@@ -34,7 +34,7 @@ On the Windows system the following command was executed to initiate the connect
 
 nc 198.168.56.103 4444
 
-<img src="../screenshots/commands/WindowsKaliconnection.png" width="800"/>
+<img src="../screenshots/commands/WindowsKaliConnection.png" width="800"/>
 
 198.168.56.103 being the kali ip address. 
 
