@@ -96,3 +96,11 @@ Incident reports include:
 - Incident response investigation
 
 ---
+
+## Detection Coverage
+
+Technique | Detection Implemented
+--- | ---
+T1059.001 | Encoded PowerShell Execution
+T1547.001 | Registry Run Key Persistence
+T1071 | Suspicious Outbound Network Connection
