@@ -57,15 +57,15 @@ Sysmon Event ID 3 logs outbound network connections including:
 - Destination IP address
 - Destination port
 
-<img src="../screenshots/queries/SPLQueryAtttack3.PNG" width="800"/>
+<img src="../screenshots/queries/SPLQueryAtttack3.png" width="800"/>
 
 ---
 
 ## Evidence
 
-The network connection was initiated from the Windows host to the Kali Linux machine.
+The network connection from the Windows host to the Kali Linux machine.
 
-<img src="../screenshots/SuspiciousNetworkConnectionCommandRun.PNG" width="800"/>
+<img src="../screenshots/commands/WindowsKaliConnection.png" width="800"/>
 
 ---
 
@@ -83,7 +83,7 @@ In a real-world scenario, analysts would investigate:
 - Whether the port used is commonly associated with command-and-control activity
 - Which process initiated the connection
 
-<img src="../screenshots/logs/Splunkloganalysis.PNG" width="800"/>
+<img src="../screenshots/logs/Splunkloganalysis.png" width="800"/>
 
 ---
 
