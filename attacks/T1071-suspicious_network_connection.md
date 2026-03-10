@@ -27,14 +27,14 @@ On the Kali Linux system a listener was started:
 
 nc -lvnp 4444
 
-<img src="../screenshots/commands/KaliWindowsconnection.PNG" width="800"/>
+<img src="../screenshots/commands/KaliWindowsconnection.png" width="800"/>
 
 On the Windows system the following command was executed to initiate the connection:
 
 
 nc 198.168.56.103 4444
 
-<img src="../screenshots/commands/WindowsKaliconnection.PNG" width="800"/>
+<img src="../screenshots/commands/WindowsKaliconnection.png" width="800"/>
 
 198.168.56.103 being the kali ip address. 
 
