@@ -2,11 +2,11 @@
 
 ## Executive Summary
 
-A Splunk alert triggered in the SOC lab environment for encoded PowerShell execution on the monitored Windows 10 virtual machine.
+During the SOC lab exercise, encoded PowerShell execution was identified on the monitored Windows 10 virtual machine through Sysmon process creation telemetry ingested into Splunk.
 
-The alert was generated from Sysmon process creation telemetry and successfully identified the use of the `-EncodedCommand` parameter in PowerShell.
+Based on this activity, a custom SPL detection rule was developed to identify PowerShell executions that used the `-EncodedCommand` parameter. The rule was then operationalized as a Splunk alert to detect similar behavior in future events.
 
-The activity was reviewed and confirmed to be a controlled lab simulation.
+The alert was successfully validated against the simulated activity and confirmed to function as expected.
 
 ---
 
@@ -73,7 +73,6 @@ T1132 – Data Encoding
 
 ## Outcome
 
-The alert successfully detected the simulated encoded PowerShell activity.
+The detection rule and alert successfully identified the simulated encoded PowerShell activity.
 
-No additional containment actions were required because the event was part of a controlled lab exercise.
-
+No containment actions were required because the event was part of a controlled lab exercise. However, the alert logic is suitable for identifying similar PowerShell behavior in future events.
