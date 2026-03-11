@@ -62,7 +62,7 @@ Splunk alert configuration:
 
 Splunk alert triggered:
 
-<img src="../screenshots/alerts/alerttriggeredoutbound.JPG" width="800"/>
+<img src="../screenshots/alerts/alerttriggeroutbound.JPG" width="800"/>
 
 ## MITRE ATT&CK Mapping
 
