@@ -104,3 +104,10 @@ Technique | Identified Attack
 T1059.001 | Encoded PowerShell Execution
 T1547.001 | Registry Run Key Persistence
 T1071 | Suspicious Outbound Network Connection
+
+
+## SOC Lab Architecture
+
+<img src="architecture/SOCLabArquitecture.png" width="900"/>
+
+Figure 1. Architecture of the SOC detection lab environment.
