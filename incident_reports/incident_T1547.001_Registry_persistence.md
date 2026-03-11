@@ -4,7 +4,7 @@
 
 During the SOC lab exercise, registry-based persistence activity was identified on the monitored Windows 10 virtual machine through Sysmon registry modification telemetry ingested into Splunk.
 
-Based on this activity, a custom SPL detection rule was developed to identify modifications to the Windows `CurrentVersion\Run` registry key, a common persistence location used to achieve execution at user logon. The rule was then operationalized as a Splunk alert to detect similar behavior in future events.
+After the activity was generated, the corresponding Sysmon event was reviewed manually in Splunk to confirm that the telemetry had been captured correctly. Based on this observed behavior, a custom SPL detection rule was developed to identify modifications to the Windows `CurrentVersion\Run` registry key, a common persistence location used to achieve execution at user logon. The rule was then operationalized as a Splunk alert to detect similar behavior in future events.
 
 The alert was successfully validated against the simulated activity and confirmed to function as expected.
 
@@ -22,30 +22,35 @@ index=main EventCode=13 TargetObject="*CurrentVersion\\Run*"
 
 This query searches Sysmon registry modification events for changes affecting the Windows CurrentVersion\Run key, which is commonly abused to establish persistence.
 
-Trigger Logic: Results greater than 0 within the configured alert time window.
+## Alert Details
 
-## Affected Asset
+**Alert Name:** Suspicious Registry Persistance Detected
 
-Hostname: Windows 10 SOC Lab VM
-Role: Monitored Endpoint
-Telemetry Source: Sysmon
-Monitoring Platform: Splunk SIEM
+Trigger Logic: Results greater than 0 within the configured alert time window, trigger only once. When triggered it will be added to triggered alerts.
+
+Affected Type: Scheduled Everyday at 18:00
+
+
+## Timeline of Activity
+
+| Time | Event |
+|-----|------|
+| 14:50:00 | Encoded PowerShell command executed on Windows host |
+| 14:50:58 | Sysmon logged process creation event (Event ID 1) |
+| 14:51:19 | Manual Splunk search confirmed the event matched the detection logic|
+| 18:00:29 | Scheduled Splunk alert triggered on the matching encoded PowerShell event |
 
 ## Validation Steps
 
-Simulated registry persistence on the Windows endpoint by creating a Run key entry.
+1. Simulated registry persistence on the Windows endpoint by creating a Run key entry.
 
-Reviewed the resulting Sysmon Event ID 13 registry modification event in Splunk.
+2. Reviewed the resulting Sysmon Event ID 13 registry modification event in Splunk.
 
-Confirmed that the TargetObject field referenced the CurrentVersion\Run registry path.
+3. Confirmed that the TargetObject field referenced the CurrentVersion\Run registry path.
 
-Verified that the registry value added would execute cmd.exe at user logon.
+4. Verified that the registry value added would execute cmd.exe at user logon.
 
-Created a custom SPL detection rule based on the observed telemetry.
-
-Configured the detection rule as a Splunk alert.
-
-Validated that the alert successfully triggered on the simulated activity.
+5. Allowed the scheduled alert to run and confirmed it triggered on the same activity.
 
 ## Findings
 
