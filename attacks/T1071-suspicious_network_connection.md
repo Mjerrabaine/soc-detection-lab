@@ -57,7 +57,7 @@ Sysmon Event ID 3 logs outbound network connections including:
 - Destination IP address
 - Destination port
 
-<img src="../screenshots/queries/SPLQueryAttack3.png" width="800"/>
+<img src="../screenshots/queries/queryoutbound.JPG" width="800"/>
 
 ---
 
@@ -107,7 +107,8 @@ Action: Add to Triggered Alerts
 
 This alert allows SOC analysts to detect potential command-and-control communication from compromised hosts.
 
-<img src="../screenshots/alerts/Splunkloganalysis.png" width="800"/>
+<img src="../screenshots/alerts/alertconfigoutbound.JPG" width="800"/>
+<img src="../screenshots/alerts/alertconfigoutbound2.JPG" width="800"/>
 
 ---
 
