@@ -63,6 +63,7 @@ Encoded PowerShell command execution:
 Splunk detection result:
 
 <img src="../screenshots/logs/EncodedLogAAlert.JPG" width="800"/>
+<img src="../screenshots/logs/EncodedLogAAlert2.JPG" width="800"/>
 
 Splunk alert configuration:
 
