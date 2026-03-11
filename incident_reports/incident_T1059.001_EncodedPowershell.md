@@ -4,9 +4,9 @@
 
 During the SOC lab exercise, encoded PowerShell execution was identified on the monitored Windows 10 virtual machine through Sysmon process creation telemetry ingested into Splunk.
 
-Based on this activity, a custom SPL detection rule was developed to identify PowerShell executions that used the `-EncodedCommand` parameter. The rule was then operationalized as a Splunk alert to detect similar behavior in future events.
+After the activity was generated, the corresponding Sysmon event was reviewed manually in Splunk to confirm that the telemetry had been captured correctly. Based on this observed behavior, a custom SPL detection rule was developed to identify PowerShell executions that used the `-EncodedCommand` parameter.
 
-The alert was successfully validated against the simulated activity and confirmed to function as expected.
+The rule was then used to create a scheduled Splunk alert to detect similar behavior in future events. When the alert ran, it successfully triggered on the matching event, validating the detection logic and alert configuration.
 
 ---
 
@@ -31,28 +31,28 @@ index=main EventCode="1" Image="*powershell.exe*" CommandLine="*-EncodedCommand*
 |-----|------|
 | 11:17:00 | Encoded PowerShell command executed on Windows host |
 | 11:17:11 | Sysmon logged process creation event (Event ID 1) |
-| 11:18:19 | Splunk detection query matched encoded command execution |
-| 12:01:19 | Splunk detection alert triggered for Encoded Powershell |
+| 11:18:19 | Manual Splunk search confirmed the event matched the detection logic|
+| 12:01:19 | Scheduled Splunk alert triggered on the matching encoded PowerShell event |
 
 ## Investigation Steps
 
-Reviewed the triggered alert in Splunk.
+1. Executed the encoded PowerShell command on the Windows endpoint.
 
-Confirmed the detection matched a Sysmon Event ID 1 process creation event.
+2. Reviewed the resulting Sysmon Event ID 1 process creation event in Splunk.
 
-Examined the command line associated with the PowerShell process.
+3. Confirmed that the command line included the -EncodedCommand parameter.
 
-Verified that the process included the -EncodedCommand parameter.
+4. Verified that the custom SPL query matched the observed event.
 
-Correlated the event with the lab simulation activity performed on the Windows endpoint.
+5. Allowed the scheduled alert to run and confirmed it triggered on the same activity.
 
 ## Findings
 
 The investigation confirmed that PowerShell executed an encoded command on the monitored endpoint.
 
-The command matched the expected lab simulation and was successfully detected by the custom SPL rule configured in Splunk.
+The activity first appeared as a Sysmon Event ID 1 process creation log in Splunk, where it was manually reviewed to confirm that the telemetry had been ingested successfully and matched the intended detection logic.
 
-The event demonstrated that Sysmon process creation telemetry and Splunk detection logic were functioning correctly.
+After this validation step, the scheduled Splunk alert triggered on the same event, demonstrating that the alert configuration was functioning correctly and that similar encoded PowerShell activity could be detected automatically in future events.
 
 ## Evidence Reviewed
 
