@@ -59,15 +59,21 @@ The custom SPL detection rule and resulting alert successfully identified the ac
 
 Registry persistence command execution:
 
-<img src="../screenshots/commands/RegistryPersistenceCommandRun.PNG" width="800"/>
+<img src="../screenshots/commands/RegistryPersistenceCommandLine2.PNG" width="800"/>
 
 Splunk detection result:
 
-<img src="../screenshots/logs/RegistryPersistenceResultSplunk.PNG" width="800"/>
+<img src="../screenshots/logs/logregistry.JPG" width="800"/>
 
 ## Splunk alert configuration:
 
-<img src="../screenshots/alerts/RegistryPersistenceAlert.PNG" width="800"/>
+<img src="../screenshots/alerts/alertregistry.JPG" width="800"/>
+<img src="../screenshots/alerts/alertregistry2.JPG" width="800"/>
+
+## Splunk alert triggered:
+
+<img src="../screenshots/alerts/alertregistryt.JPG" width="800"/>
+
 ## MITRE ATT&CK Mapping
 
 Primary Technique:
