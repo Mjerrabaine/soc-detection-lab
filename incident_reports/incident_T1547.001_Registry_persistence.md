@@ -38,6 +38,7 @@ Affected Type: Scheduled Everyday at 18:00
 | 14:50:00 | Encoded PowerShell command executed on Windows host |
 | 14:50:58 | Sysmon logged process creation event (Event ID 1) |
 | 14:51:19 | Manual Splunk search confirmed the event matched the detection logic|
+| 18:00:00 | Splunk alert was scheduled to run |
 | 18:00:29 | Scheduled Splunk alert triggered on the matching encoded PowerShell event |
 
 ## Validation Steps
