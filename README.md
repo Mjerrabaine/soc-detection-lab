@@ -60,7 +60,7 @@ Each attack includes:
 Custom SPL queries were developed to detect malicious behavior using Sysmon logs.
 
 For example:
-index= "main " Image="*powershell.exe*" CommandLine="*-EncodedCommand*" 
+index= "main " EventId="1" Image="*powershell.exe*" CommandLine="*-EncodedCommand*" 
 
 
 ## Alerts
