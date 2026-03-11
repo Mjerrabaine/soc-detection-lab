@@ -27,6 +27,7 @@ Monitoring Platform: Splunk SIEM
 
 ```spl
 index=main Image="*powershell.exe*" CommandLine="*-EncodedCommand*"
+```
 
 ## Investigation Steps
 
