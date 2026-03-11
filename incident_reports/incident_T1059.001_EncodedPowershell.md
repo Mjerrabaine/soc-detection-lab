@@ -26,8 +26,17 @@ Monitoring Platform: Splunk SIEM
 **Detection Query:**
 
 ```spl
-index=main Image="*powershell.exe*" CommandLine="*-EncodedCommand*"
+index=main EventCode="1" Image="*powershell.exe*" CommandLine="*-EncodedCommand*"
 ```
+
+## Timeline of Activity
+
+| Time | Event |
+|-----|------|
+| 11:17:00 | Encoded PowerShell command executed on Windows host |
+| 11:17:11 | Sysmon logged process creation event (Event ID 1) |
+| 11:18:00 | Splunk detection query matched encoded command execution |
+| 12:00:00 | Splunk detection alert triggered for Encoded Powershell |
 
 ## Investigation Steps
 
@@ -53,11 +62,11 @@ The event demonstrated that Sysmon process creation telemetry and Splunk detecti
 
 Encoded PowerShell command execution:
 
-<img src="../screenshots/commands/EncodedPowershellComandRun.PNG" width="800"/>
+<img src="../screenshots/commands/incidentcommand.JPG" width="800"/>
 
 Splunk detection result:
 
-<img src="../screenshots/logs/EncodedPowershellResultSplunk.PNG" width="800"/>
+<img src="../screenshots/logs/EncodedLogAAlert.JPG" width="800"/>
 
 Splunk alert configuration:
 
