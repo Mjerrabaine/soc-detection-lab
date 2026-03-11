@@ -91,14 +91,23 @@ In a real-world scenario, analysts would investigate:
 
 An alert was created in Splunk using the same SPL query to detect suspicious outbound network connections.
 
-Alert configuration included:
+**Alert Configuration**
 
-- Trigger condition: Results greater than 0
-- Alert frequency: Every 5 minutes
-- Action: Add to triggered alerts in Splunk
-- Action: Send email notification
+An alert was created in Splunk using the same SPL query.
+
+Alert configuration:
+
+Alert Name: Encoded powershell execution detected
+
+Alert Type :Scheduled everyday at 12:00
+
+Trigger condition: Results > 0, trigger only once
+
+Action: Add to Triggered Alerts
 
 This alert allows SOC analysts to detect potential command-and-control communication from compromised hosts.
+
+<img src="../screenshots/alerts/Splunkloganalysis.png" width="800"/>
 
 ---
 
