@@ -99,7 +99,7 @@ Alert configuration:
 
 Alert Name: Encoded powershell execution detected
 
-Alert Type :Scheduled everyday at 12:00
+Alert Type :Scheduled everyday at 16:00
 
 Trigger condition: Results > 0, trigger only once
 
