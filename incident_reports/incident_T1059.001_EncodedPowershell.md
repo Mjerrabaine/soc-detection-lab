@@ -14,14 +14,10 @@ The alert was successfully validated against the simulated activity and confirme
 
 **Alert Name:** Encoded PowerShell Execution Detected
 
-Trigger Logic: Results greater than 0 within the configured alert time window.
+Trigger Logic: Results greater than 0 within the configured alert time window, trigger only once. When triggered it will be added to triggered alerts.
 
-Affected Asset
+Affected Type: Scheduled Everyday at 12:00
 
-Hostname: Windows 10 SOC Lab VM
-Role: Monitored Endpoint
-Telemetry Source: Sysmon
-Monitoring Platform: Splunk SIEM
 
 **Detection Query:**
 
@@ -72,8 +68,7 @@ Splunk alert configuration:
 
 <img src="../screenshots/alerts/alert1enc.JPG" width="800"/>
 <img src="../screenshots/alerts/alert2enc.JPG" width="800"/>
-<img src="../screenshots/alerts/alert3enc.JPG" width="800"/>
-<img src="../screenshots/alerts/alert4enc.JPG" width="800"/>
+<img src="../screenshots/alerts/alert5enc.JPG" width="800"/>
 
 Splunk alert triggered:
 
