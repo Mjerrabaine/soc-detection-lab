@@ -62,7 +62,7 @@ The event demonstrated that Sysmon process creation telemetry and Splunk detecti
 
 Encoded PowerShell command execution:
 
-<img src="../screenshots/commands/incidentcommand.JPG" width="800"/>
+<img src="../screenshots/commands/encodedincidentcommand.JPG" width="800"/>
 
 Splunk detection result:
 
