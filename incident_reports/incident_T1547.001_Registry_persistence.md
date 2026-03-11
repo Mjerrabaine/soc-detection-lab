@@ -63,7 +63,7 @@ Registry persistence command execution:
 
 Splunk detection result:
 
-<img src="../screenshots/logs/logregistry.JPG" width="800"/>
+<img src="../screenshots/logs/Logregistry.JPG" width="800"/>
 
 ## Splunk alert configuration:
 
