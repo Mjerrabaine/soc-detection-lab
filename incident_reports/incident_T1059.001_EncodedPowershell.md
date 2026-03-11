@@ -32,6 +32,7 @@ index=main EventCode="1" Image="*powershell.exe*" CommandLine="*-EncodedCommand*
 | 11:17:00 | Encoded PowerShell command executed on Windows host |
 | 11:17:11 | Sysmon logged process creation event (Event ID 1) |
 | 11:18:19 | Manual Splunk search confirmed the event matched the detection logic|
+| 12:00:00 | Splunk alert was scheduled to run |
 | 12:01:19 | Scheduled Splunk alert triggered on the matching encoded PowerShell event |
 
 ## Investigation Steps
