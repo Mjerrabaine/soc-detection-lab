@@ -35,8 +35,8 @@ index=main EventCode="1" Image="*powershell.exe*" CommandLine="*-EncodedCommand*
 |-----|------|
 | 11:17:00 | Encoded PowerShell command executed on Windows host |
 | 11:17:11 | Sysmon logged process creation event (Event ID 1) |
-| 11:18:00 | Splunk detection query matched encoded command execution |
-| 12:00:00 | Splunk detection alert triggered for Encoded Powershell |
+| 11:18:19 | Splunk detection query matched encoded command execution |
+| 12:01:19 | Splunk detection alert triggered for Encoded Powershell |
 
 ## Investigation Steps
 
@@ -70,7 +70,14 @@ Splunk detection result:
 
 Splunk alert configuration:
 
-<img src="../screenshots/alerts/EncodedPowershellAlert.PNG" width="800"/>
+<img src="../screenshots/alerts/alert1enc.JPG" width="800"/>
+<img src="../screenshots/alerts/alert2enc.JPG" width="800"/>
+<img src="../screenshots/alerts/alert3enc.JPG" width="800"/>
+<img src="../screenshots/alerts/alert4enc.JPG" width="800"/>
+
+Splunk alert triggered:
+
+<img src="../screenshots/alerts/alerttriggerencoded.JPG" width="800"/>
 
 ## MITRE ATT&CK Mapping
 
