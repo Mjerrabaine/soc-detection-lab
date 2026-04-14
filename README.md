@@ -69,8 +69,9 @@ Detection rules were converted into automated alerts within Splunk to simulate r
 
 Alerts created:
 
-- Encoded PowerShell Execution
-- Registry Persistence Run Key
+- Encoded PowerShell Execution Detected
+- Suspicious Outbound Connection Detected
+- Suspicious Registry Persistence Detected
 
 ---
 
