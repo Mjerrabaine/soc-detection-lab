@@ -76,8 +76,6 @@ Alerts created:
 
 ## Incident Investigation
 
-Two security incidents were investigated based on simulated attacks.
-
 Incident reports include:
 
 - Timeline of activity
