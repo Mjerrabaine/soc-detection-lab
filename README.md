@@ -7,6 +7,7 @@ This project demonstrates the creation of a local Security Operations Center (SO
 The lab environment uses Windows and Kali Linux virtual machines to simulate attacks and analyze logs collected with Sysmon and ingested into Splunk.
 
 The objective of this project is to develop detection rules, alerts, and incident analysis based on real attack simulations mapped to the MITRE ATT&CK framework.
+
 ---
 
 ## Tools Used
